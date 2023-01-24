@@ -1,6 +1,7 @@
 class Questions
-  def questions
-    puts "hello questions #{ARGV}"
+  def question
+    answer=$stdin.gets.chomp
+    puts "hello questions #{answer}"
   end
 end
 
