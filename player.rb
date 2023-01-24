@@ -1,11 +1,12 @@
 class Player
 
-  attr_accessor :life_count, :won
+  attr_accessor :life_count, :lost, :name
   
   def initialize(number)
     @number = number
     @life_count=3
-    @won = false
+    @lost = false
+    @name = "player#{number}"
   end
 
   def player
@@ -14,10 +15,13 @@ class Player
 
   def life_remove
     @life_count-=1
+    if @life_count == 0
+      self.on_lose
+    end
   end
 
-  def on_win
-    @won = true
+  def on_lose
+    @lost = true
   end
 
 end

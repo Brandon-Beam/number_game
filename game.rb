@@ -2,18 +2,27 @@ require './player'
 require './questions'
 
 player1 = Player.new(1)
-#player1.player
 player2 = Player.new(2)
-#player2.life_remove
-#player2.life_remove
-#puts player2.life_count
-#puts player1.life_count
-#player2 = Player.new(2)
-#puts player2.won
-#player2.on_win
-#puts player2.won
-#puts player1.won
-
-
 questions1 = Questions.new()
-questions1.test(1)
+
+current_player = player2
+while player1.lost==false && player2.lost==false
+  if current_player == player2
+  current_player = player1
+  else
+  current_player = player2
+end
+  if questions1.test==true 
+    puts "correct #{current_player.name} #{current_player.life_count} out of 3 lives remaining"
+  else 
+    current_player.life_remove
+    puts "nope #{current_player.name} now has #{current_player.life_count} out of 3 lives remaining"
+  end
+end
+if current_player == player2
+  current_player = player1
+  else
+  current_player = player2
+end
+puts "#{current_player.name} wins with #{current_player.life_count} out of 3 lives remaining, good-bye"
+
